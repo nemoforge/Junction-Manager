@@ -102,6 +102,14 @@ Cleanup runs in `finally` for ordinary assertion failures and exceptions, then v
 
 Tests use synthetic application data, backups and logs. They do not use real app data for destructive cases. Update tests replace the network boundary and browser launch so automated runs do not fetch public metadata or open a browser. The recorded tests use the project drive; any future cross-volume test requires separately owned sandboxes on both volumes.
 
+## Distribution Authenticity
+
+Prefer downloads from the [official GitHub Releases page](https://github.com/nemoforge/Junction-Manager/releases). Only releases published by Nemoforge through the [official repository](https://github.com/nemoforge/Junction-Manager), the [official website](https://nemoforge.github.io), or a publication domain explicitly designated there by Nemoforge are official Junction Manager releases.
+
+Modified third-party builds and contribution forks are not official releases. A permitted mirror may distribute an unchanged official release, but must identify itself as an unofficial mirror, retain the notices and LICENSE, and link to the original source. Neither public source availability nor a familiar project name establishes Nemoforge's endorsement. See [LICENSE](LICENSE) for distribution and branding terms.
+
+Report suspected malicious redistribution, deceptive update packages, or impersonation to [support@studyhelp.space](mailto:support@studyhelp.space), with the relevant URL and observed behavior. These publication rules do not add release signing or artifact verification to the application; the technical update boundaries above still apply.
+
 ## Reporting Security Issues
 
 Report security or data-loss issues privately to [support@studyhelp.space](mailto:support@studyhelp.space). Include the application version, relevant environment, expected/observed behavior and minimal reproduction steps where possible. Redact personal paths, credentials and sensitive file contents before sharing logs.

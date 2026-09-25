@@ -2,6 +2,12 @@
 
 All notable changes to Junction Manager will be documented in this file.
 
+## Unreleased
+
+### Documentation
+
+- Added project licensing terms under [JMCSL-1.0](LICENSE), with README licensing guidance and distribution authenticity information in SECURITY.md. No application version or behavior changed.
+
 ## [V1.0.0] - 2026-09-25
 
 ### Added

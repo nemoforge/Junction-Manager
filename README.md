@@ -77,6 +77,16 @@ The harnesses were subsequently removed from `main`; [TESTING.md](TESTING.md) li
 - SHA-256/ADS checks verify file content; they are not a guarantee of every NTFS metadata feature or application compatibility.
 - Rollback restores the older backup without merging newer Target data; Delete Backup is permanent.
 
+## License
+
+Junction Manager is **source-available** under the [Junction Manager Community Source License 1.0 (JMCSL-1.0)](LICENSE). It is not an OSI Open Source license.
+
+Free use is allowed for personal, educational, research, security-review, and internal organizational purposes, including internal business use. Private modifications and contribution forks are permitted under the license. Free mirrors of unmodified official releases must meet its attribution and distribution conditions.
+
+Commercial redistribution, resale, rebranding as another product, competing distributions, and public distribution of modified builds require prior written permission from Nemoforge, subject to the contribution-fork exception and independently granted platform rights. Malicious use or distribution is prohibited; authorized security research remains permitted. No trademark rights are granted.
+
+See [LICENSE](LICENSE) for the full terms, including contribution licensing. For permission requests, contact [support@studyhelp.space](mailto:support@studyhelp.space).
+
 ## Project Links
 
 - [Repository](https://github.com/nemoforge/Junction-Manager)

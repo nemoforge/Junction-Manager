@@ -1,0 +1,234 @@
+Junction Manager Community Source License 1.0
+Short identifier: JMCSL-1.0
+
+Copyright (c) 2026 Nemoforge (DINH DUC LOC)
+Initial licensed version: V1.0.0
+
+Official repository: https://github.com/nemoforge/Junction-Manager
+Official website: https://nemoforge.github.io
+Contact: support@studyhelp.space
+
+1. Scope and definitions
+
+This is a custom source-available license. It restricts commercial exploitation
+and redistribution and is not an OSI Open Source license. The source is publicly
+available for transparency, personal use, review, and community contribution.
+
+"Licensor" means Nemoforge (DINH DUC LOC). "Software" means the Junction Manager
+source code and associated documentation made available under this license,
+starting with V1.0.0. "You" means the individual or organization exercising rights
+under this license. A "modified version" includes a changed, adapted, translated,
+repackaged, or rebranded copy, or a work incorporating a substantial portion of
+the Software. A "distribution" includes providing source, scripts, binaries,
+archives, installers, or access to copies to others.
+
+This license grants only rights the Licensor is entitled to grant. Separately
+licensed third-party materials remain subject to their own terms and notices;
+this license does not relicense them. Windows, PowerShell, .NET, and other system
+components are not licensed by this document merely because the Software uses
+them. Rights not expressly granted are reserved, subject to section 11.
+
+2. Free personal, internal, educational, and review use
+
+Subject to this license, the Licensor grants you a worldwide, non-exclusive,
+royalty-free copyright license to:
+
+(a) Download, copy, install, run, and use the Software for personal purposes on
+    any number of computers you own or are authorized to administer.
+(b) Use and copy the Software within an organization, including a for-profit
+    business, to manage its own computers. Employees and authorized contractors
+    may use it on that organization's behalf for these internal purposes.
+(c) Modify, build, and run private copies for your personal use or your
+    organization's internal use, and share those copies only with personnel
+    acting for that organization for those purposes.
+(d) Read and study the source, learn from it, conduct education, research and
+    authorized security review, write reviews or tutorials, and report bugs or
+    vulnerabilities. Reasonable source quotations permitted by applicable
+    copyright law remain permitted.
+(e) Prepare and submit community contributions as described in section 3.
+
+Ordinary internal business use is allowed without payment to the Licensor.
+An IT administrator may use the Software at work. A business earning revenue,
+or paying employees or contractors for internal administration, does not by
+itself make that internal use prohibited commercial exploitation. This exception
+does not permit selling or offering the Software to customers as a product or
+monetized service. Section 5 defines the commercial activities requiring consent.
+
+3. Contribution forks and patches
+
+You may fork the official repository on GitHub, modify the fork to prepare a
+contribution, submit pull requests upstream, and share patches or diffs with the
+official project. A public contribution fork is an express exception to the
+modified-redistribution restriction in section 4, provided that it:
+
+(a) Is clearly identified as a contribution fork based on Junction Manager;
+(b) Retains the copyright, attribution, and LICENSE notices;
+(c) Is not promoted or supplied as a competing or replacement product; and
+(d) Does not publish standalone public packages or releases for general use.
+
+Sharing source changes for upstream review does not authorize a separately
+marketed fork. Section 11 preserves rights granted independently by GitHub.
+Deliberately submitted contributions are subject to section 8.
+
+4. Redistribution
+
+You may freely share links to the official repository and its official release
+pages. Linking does not grant additional rights in the Software.
+
+You may mirror an unmodified official release without prior written permission
+only if all of the following conditions are met:
+
+(a) The original release files remain unchanged, without repackaging, added
+    installers, bundled software, renaming as another product, or altered code;
+(b) Access and download are free, without paid licensing, paid access, resale,
+    or other monetized redistribution as described in section 5;
+(c) All copyright and author notices are retained and the complete LICENSE
+    accompanies the copy; it may accompany an unchanged release archive;
+(d) The mirror identifies the original version and clearly states:
+    "Unofficial mirror of an unmodified official Junction Manager release";
+(e) A prominent link points to the official repository and original release
+    page, with the official download recommended as the primary source; and
+(f) The mirror does not claim to be an official publisher or endorsed service,
+    impose replacement license terms, or present the Software as its own product.
+
+Private/internal sharing under section 2 and contribution forks under section 3
+are also allowed. Apart from these express permissions and section 11, public
+redistribution of modified versions, independent builds, or forks requires the
+Licensor's prior written permission, even when offered free of charge. Other
+redistribution not expressly permitted here also requires written permission.
+
+You may not take the Software or a substantial portion of it, rename or rebrand
+it, and publish it as your own or a competing product without prior written
+permission. An allowed, accurately labeled mirror is not a competing product.
+Private modifications need no redistribution permission while kept within the
+personal/internal scope of section 2.
+
+5. Commercial exploitation requiring written permission
+
+Without the Licensor's prior written permission covering the specific activity,
+you may not use the Software or a substantial portion of it, including a modified
+version, for any of the following:
+
+(a) Selling, reselling, paid licensing, or charging for downloads or access;
+(b) Incorporating it into a commercial software product or commercial service
+    offered to customers, or using it as the foundation of a paid product;
+(c) Providing SaaS, hosted access, or another monetized service whose primary
+    functionality or value is supplied by the Software;
+(d) Bundling it with a commercial software package or product, or supplying it
+    through paid OEM distribution or preinstallation on products sold to others;
+(e) Monetized redistribution, including revenue specifically tied to supplying
+    copies or access, regardless of whether the copy is advertised as free; or
+(f) Selling support, licenses, subscriptions, or access based on a fork or
+    marketing a modified version as a commercial product.
+
+The personal and internal organizational uses expressly permitted by section 2
+are excluded from these restrictions. Authorized security research, review,
+teaching, or permitted technical quotation is not prohibited solely because the
+researcher, reviewer, teacher, or writer receives compensation; this does not
+permit selling copies, access, or a fork-based support service.
+
+6. Malicious use and harmful modifications
+
+You may not use, modify, or distribute the Software or its derivatives with
+malicious intent to deploy malware, spyware, ransomware, credential theft,
+unauthorized persistence, destructive payloads, or backdoors; to bypass security
+controls to cause harm or obtain unauthorized access; or to impersonate an
+official update or release to deceive users.
+
+This restriction targets harmful conduct. It does not prohibit lawful,
+authorized security research, controlled testing on systems you own or have
+permission to test, vulnerability analysis, or good-faith reporting. Research
+does not independently authorize public distribution of a modified build;
+section 4 still applies, subject to section 11.
+
+7. Official releases, attribution, and branding
+
+Only releases published by the Licensor through the official repository above
+or the official website, or through a publication domain explicitly designated
+there by the Licensor, are "Official Junction Manager Releases". A third-party
+fork or modified build is not official. An allowed mirror may identify the
+origin of an unchanged release, but must identify itself as an unofficial mirror.
+An official label is not a warranty or a substitute for verifying provenance.
+
+No trademark rights are granted by this license. This includes rights in the
+Nemoforge name, Junction Manager branding or logos, and the author's identity.
+This statement does not claim that any name or mark is registered. Accurate
+reference, attribution, and compatibility descriptions, such as "Fork based on
+Junction Manager", are permitted to identify the source or relationship, without
+implying endorsement, sponsorship, or official status. Such descriptions do not
+authorize an otherwise prohibited distribution or branding use.
+
+Retain the following notice, existing author and copyright attributions, and
+the complete LICENSE in every copy and permitted distribution:
+
+Copyright (c) 2026 Nemoforge (DINH DUC LOC)
+
+Do not remove or obscure those notices. Clearly identify your own modifications
+in any permitted shared modified copy. Technical quotations may provide source
+attribution as appropriate under applicable law rather than reproduce the whole
+LICENSE. No permission to use branding deceptively is granted.
+
+8. Contributions to the official project
+
+When you deliberately submit a contribution for inclusion in the official
+project, you confirm that you own it or have the necessary rights and authority
+to submit it under these terms, including any necessary employer permission.
+Identify third-party material and its terms; do not submit material you lack the
+right to license. A bug report or security disclosure containing material only
+for analysis is not by itself a submission for incorporation into the Software.
+
+For contributions you submit under this section, you grant the Licensor a
+perpetual, irrevocable, worldwide, non-exclusive, royalty-free copyright license
+to use, reproduce, modify, incorporate, distribute, and sublicense them as part
+of the official project under this license or a successor license chosen by the
+Licensor. This includes a successor with different or commercial licensing
+terms. You retain your copyright; no copyright assignment is required. This
+grant covers only rights you are entitled to grant and does not override a
+separately disclosed third-party license. Separately agreed contribution terms
+may be recorded in writing. This section does not retroactively change the
+terms of contributions made before it applied to their submission.
+
+9. Warranty disclaimer and limitation of liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS PROVIDED
+"AS IS" AND "AS AVAILABLE", WITHOUT EXPRESS OR IMPLIED WARRANTIES, INCLUDING
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
+NON-INFRINGEMENT. THE LICENSOR AND CONTRIBUTORS DO NOT GUARANTEE ABSOLUTE DATA
+SAFETY, COMPATIBILITY, ACCURACY, UNINTERRUPTED OPERATION, OR ERROR-FREE RESULTS.
+YOU ARE RESPONSIBLE FOR ASSESSING SUITABILITY, TESTING, AND KEEPING BACKUPS.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSOR AND CONTRIBUTORS
+ARE NOT LIABLE FOR DAMAGES ARISING FROM USE OF, INABILITY TO USE, OR DISTRIBUTION
+OF THE SOFTWARE, INCLUDING LOSS OF DATA OR PROFITS, BUSINESS INTERRUPTION,
+FILESYSTEM OR APPLICATION DAMAGE, OR OTHER DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, OR CONSEQUENTIAL LOSS, REGARDLESS OF THE LEGAL BASIS OF THE CLAIM AND
+EVEN IF ADVISED THAT THE LOSS COULD OCCUR. THIS SECTION DOES NOT EXCLUDE A
+WARRANTY, RIGHT, OR LIABILITY THAT APPLICABLE LAW DOES NOT ALLOW TO BE EXCLUDED.
+
+10. Termination
+
+Your rights under this license terminate automatically upon a material breach
+of its terms. You must stop the activities that require permission under this
+license. The Licensor may reinstate your rights in writing after the violation
+is remedied. Termination does not remove obligations or liabilities arising
+before termination, cancel contribution rights already granted under section 8,
+or terminate the rights of recipients who remain in compliance.
+
+11. Separate rights and permission requests
+
+Nothing in this license restricts rights that cannot be restricted under
+applicable law, including applicable copyright exceptions, or rights granted
+independently under hosting-platform terms. In particular, it does not withdraw
+GitHub users' rights to view and fork public repositories within GitHub under
+GitHub's applicable terms. Those platform rights do not by themselves grant
+permission under this license for an independently marketed distribution.
+
+Any successor license applies only as stated with the copies released under it;
+it does not retroactively change the terms of copies already licensed to you
+under this version. README and other summaries do not replace this LICENSE.
+Separate written permissions may authorize additional activities within their
+stated scope; permission for one activity does not imply permission for others.
+
+For commercial licensing, redistribution, OEM use, or permission to publish a
+modified build, contact support@studyhelp.space. Permission must come from the
+Licensor in writing before the otherwise restricted activity begins.
