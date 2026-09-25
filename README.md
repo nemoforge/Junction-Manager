@@ -1,68 +1,92 @@
 # Junction Manager
 
-Version: **V1.0.0**
+Junction Manager is a Windows PowerShell/WPF utility for moving an application folder to another local NTFS volume while preserving its original path through an NTFS directory junction. It validates the paths, verifies the copy and retains the original data as a backup.
 
-Author: **Nemoforge (DINH DUC LOC)**
+**Version:** V1.0.0 · **Author:** Nemoforge (DINH DUC LOC)
 
-Support: [nemoforge.github.io](https://nemoforge.github.io) | support@studyhelp.space
+## Key Features
 
-Windows PowerShell 5.1 + WPF utility to discover application folders, move a folder between local NTFS volumes, retain a backup, and create a verified junction at the original location.
+- **Analyze before Move:** path, volume, overlap and available-space checks, with Source/Target folder browsing.
+- **Verified migration:** Robocopy with `/COPYALL`, FinalSync, SHA-256 and alternate data stream (ADS) verification, followed by junction verification and transaction journaling.
+- **Retained backup and rollback:** keep the pre-migration copy until explicitly deleting it; restore it without deleting Target.
+- **App Discovery:** find candidate locations from Installed Apps, running processes, executable metadata and related folders.
+- **Controlled maintenance:** Clear Logs preserves recovery information; Delete Backup requires managed provenance and matching directory identities.
+- **Background operations and manual updates:** responsive WPF operations, related-process detection with consent, and About → Check for Updates.
 
-## Run
+## Safety Model
 
-Download the complete source project, extract it, and run `script.bat`, or:
+Migration copies and checks the data before renaming Source to a backup. It verifies the backup against Target before creating the junction; it does not delete the retained source data during migration. The original Source path is temporarily unavailable during this final verification.
+
+Discovery is read-only. Destructive maintenance checks ownership, canonical paths and reparse points before confirmation and deletion. Close the application, updater and services before migrating: process detection is not a file-lock detector or an atomic snapshot. Keep an independent backup of important data. See [SECURITY.md](SECURITY.md) for the operation sequence and safety boundaries.
+
+## Requirements
+
+- Windows with **Windows PowerShell 5.1 Desktop** and WPF. The recorded test environment is described in [TESTING.md](TESTING.md#recorded-environment); no broader Windows-version test matrix is claimed.
+- Administrator access: the application requests elevation at launch.
+- Source and Target on **different local fixed NTFS volumes**, with sufficient free space. Target must be new or empty.
+- Built-in Windows tools and .NET Framework components; no external PowerShell modules or installer are required.
+
+## Installation and Usage
+
+1. Download and extract a ZIP from [Releases](https://github.com/nemoforge/Junction-Manager/releases) when available. Alternatively, use **Code → Download ZIP** on the [repository](https://github.com/nemoforge/Junction-Manager).
+2. Keep `script.bat`, `Junction.ps1`, `Junction.Discovery.ps1`, `Junction.Maintenance.ps1` and `Junction.Update.ps1` together. Run **script.bat** and approve UAC.
+3. Use **Browse Source** or **App Discovery**, then choose the exact destination folder with **Browse Target**. The Target picker can create an empty folder.
+4. Close the application, updater and services. Select **Analyze / Validate** and review the results.
+5. Select **Move & Create Junction**, review the confirmation and wait for the operation to finish.
+6. Test the application at its original path. Retain the backup until satisfied; use **Delete Backup** only after reviewing its permanent-deletion warning.
+
+To launch directly from the extracted directory:
 
 ```powershell
 powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\Junction.ps1
 ```
 
-Keep `Junction.ps1`, `Junction.Discovery.ps1`, `Junction.Maintenance.ps1` and `Junction.Update.ps1` together. The application requests Administrator access. No external modules or installer are required.
+The source repository contains developer documentation and may contain tests. Tests and Markdown files are not required in a runtime ZIP. Logs and ownership markers are created at runtime; do not ship existing `MigrationLogs` or `.test-sandbox` folders as part of a release.
 
-Choose Source and Target, run **Analyze**, and review the confirmation before **Move**. Close the application being moved, including its updater/services. Copy verification includes SHA-256 and alternate data streams; the original backup remains until you explicitly delete it. **Rollback** restores that older copy without merging later changes from Target.
+## App Discovery
 
-App Discovery only reads information. Clear Logs retains recovery journals. Delete Backup requires managed transaction provenance, matching NTFS identities and a verified junction. See [TESTING.md](TESTING.md) for safety limits, test results and manual checks.
+Search by application name, process name or executable, or select an entry from **Installed Apps**. Discovery combines registry entries, process paths, executable metadata and related folder names, then ranks and deduplicates candidate locations. Scans are bounded and cancellable; classification is a hint rather than a migration safety decision.
+
+**Use as Source** or a double-click fills Source with the selected directory, or the parent directory of a selected executable. It does not move anything. Run Analyze again before migration. Discovery does not execute discovered commands, stop processes or change permissions, including when WindowsApps cannot be read.
+
+## Rollback and Backup
+
+`<Source>_backup` retains the pre-migration data. **Rollback** removes the verified Source junction and restores this older directory to Source, while leaving Target intact. It **does not merge newer data from Target** into the backup.
+
+**Delete Backup** permanently removes the retained copy and normal rollback option. Current Target data and the junction remain. Backups without the required managed history/identity are not eligible for deletion; interrupted deletion requires inspection of the retained journal.
 
 ## Check for Updates
 
-Open **About → Check for Updates**. Junction Manager does not update itself automatically. Checks occur only when requested by the user. If a newer version is available, **Open Download Page** opens the official page in the default browser after another click. Installation is manual.
+Open **About → Check for Updates**. The release model is **Check → Compare → Inform → Open official download page**.
 
-The update checker reads public JSON using HTTPS, with an 8-second request timeout, a 16 KiB response limit and no retries or redirects. It sends no application telemetry, credentials, cookies, Source/Target paths or logs. Normal HTTPS certificate validation remains enabled. The server will still see ordinary network information such as the request IP address.
+The checker reads HTTPS metadata only on request and compares three-component versions numerically, so `V1.10.0` is newer than `V1.9.9`. For a newer version with a valid download-page URL, **Open Download Page** opens the official page in the default browser after a separate click. Installation remains manual.
 
-Remote notes are plain text. Versions use three numeric components with an optional `V`/`v` prefix; prerelease/build suffixes are not supported. Older published versions never offer a downgrade. HTTPS page links are limited to `nemoforge.github.io` and this repository's GitHub repository/release pages. Direct release assets, other repositories, credentials, query strings and fragments are rejected.
+There is no automatic release download, self-update, remote code execution, startup update request or application telemetry. Errors are non-fatal and preserve the migration analysis. For URL restrictions, metadata publishing and privacy details, see [Update Security](SECURITY.md#update-security).
 
-The checker never downloads a release, runs remote code, replaces local files, schedules checks or contacts the network at startup. A network or metadata error is non-fatal and preserves the existing migration analysis.
+## Testing
 
-## Publish update metadata
+The latest recorded V1.0.0 development run reports **186 automated checks**: 58 regression/WPF, 54 Discovery/maintenance/cleanup and 74 offline update checks. These are historical results, not a new run or a CI coverage claim.
 
-`$script:AppInfo` in `Junction.ps1` is the source of truth for application metadata. `UpdateMetadataUrl` points to the public endpoint below, published and verified using the production metadata GET. Set it to an empty string to disable requests and display a setup message.
+The harnesses were subsequently removed from `main`; [TESTING.md](TESTING.md) links to their recorded revision and preserves the environment, sandbox paths, cleanup results and remaining manual checks. Test code is not required to run the application.
 
-The included `version.json` is published at the root of the `main` branch in this repository. Its public URL is:
+## Limitations
 
-```text
-https://raw.githubusercontent.com/nemoforge/Junction-Manager/main/version.json
-```
+- Windows-only migration between local fixed NTFS volumes; UNC/network, removable and SUBST paths are rejected.
+- Windows/system folders, WindowsApps/MSIX folders and system/profile containers are not supported migration locations. Unsupported reparse-point trees, encrypted/offline files and paths longer than the utility's 240-character limit are rejected.
+- Applications, updaters and services should remain closed. Process detection cannot prove that no writer or file lock exists.
+- SHA-256/ADS checks verify file content; they are not a guarantee of every NTFS metadata feature or application compatibility.
+- Rollback restores the older backup without merging newer Target data; Delete Backup is permanent.
 
-If changing the endpoint, publish and verify valid public JSON before changing the single `AppInfo.UpdateMetadataUrl` value. Metadata HTTPS hosts are limited to the author's website and raw JSON under this repository. This uses static JSON, not the GitHub API or HTML scraping.
+## Project Links
 
-The initial metadata is:
+- [Repository](https://github.com/nemoforge/Junction-Manager)
+- [Releases](https://github.com/nemoforge/Junction-Manager/releases)
+- [Changelog](CHANGELOG.md)
+- [Security and data safety](SECURITY.md)
+- [Testing and recorded results](TESTING.md)
+- [Website](https://nemoforge.github.io)
+- [Support](mailto:support@studyhelp.space)
 
-```json
-{
-  "product": "Junction Manager",
-  "version": "V1.0.0",
-  "downloadUrl": "https://github.com/nemoforge/Junction-Manager",
-  "notes": "Initial source release. Download the complete project and keep all Junction.*.ps1 files together. Updates are installed manually."
-}
-```
+## Author
 
-For a future release, publish the complete source/release page first, then update `version`, `downloadUrl` and `notes`. An optional `releaseNotesUrl` can point to this repository's HTTPS release/tag page. `product` is optional but must match when present; `version` is required and limited to 32 characters; `notes` is limited to 2,000 characters; each URL is limited to 2,048 characters. Keep the published metadata version aligned with the released application's `AppInfo.Version`.
-
-## Tests and source package
-
-```powershell
-powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\tests\Smoke.ps1
-powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\tests\Features.ps1
-powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\tests\Updates.ps1
-```
-
-Automated update tests run offline with owned JSON fixtures and simulated transport errors. Test mutations remain under `.test-sandbox\<GUID>` and are cleaned in `finally`; the parent is removed only when empty. Runtime `MigrationLogs` is created when the application runs. Both directories are excluded from Git and should be excluded from a distributed source package. Keep source files, tests and documentation.
+Nemoforge (DINH DUC LOC)
