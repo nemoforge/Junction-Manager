@@ -1,0 +1,6 @@
+{
+  "product": "Junction Manager",
+  "version": "V1.0.0",
+  "downloadUrl": "https://github.com/nemoforge/Junction-Manager",
+  "notes": "Initial source release. Download the complete project and keep all Junction.*.ps1 files together. Updates are installed manually."
+}
