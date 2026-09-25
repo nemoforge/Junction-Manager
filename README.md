@@ -34,15 +34,15 @@ The checker never downloads a release, runs remote code, replaces local files, s
 
 ## Publish update metadata
 
-`$script:AppInfo` in `Junction.ps1` is the source of truth for application metadata. `UpdateMetadataUrl` is initially empty until the public endpoint has been published and verified. An empty endpoint displays a setup message and makes no request.
+`$script:AppInfo` in `Junction.ps1` is the source of truth for application metadata. `UpdateMetadataUrl` points to the public endpoint below, published and verified using the production metadata GET. Set it to an empty string to disable requests and display a setup message.
 
-Publish the included `version.json` at the root of the `main` branch in this repository. Its intended public URL is:
+The included `version.json` is published at the root of the `main` branch in this repository. Its public URL is:
 
 ```text
 https://raw.githubusercontent.com/nemoforge/Junction-Manager/main/version.json
 ```
 
-After verifying that URL returns valid public JSON, set the single `AppInfo.UpdateMetadataUrl` value to it. Metadata HTTPS hosts are limited to the author's website and raw JSON under this repository. This uses static JSON, not the GitHub API or HTML scraping.
+If changing the endpoint, publish and verify valid public JSON before changing the single `AppInfo.UpdateMetadataUrl` value. Metadata HTTPS hosts are limited to the author's website and raw JSON under this repository. This uses static JSON, not the GitHub API or HTML scraping.
 
 The initial metadata is:
 

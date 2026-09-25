@@ -187,13 +187,14 @@ Sandbox roots của lượt này:
 E:\code\project\app\.test-sandbox\64a6b642be6d44d1a5cab4750c8f9731
 E:\code\project\app\.test-sandbox\eb6b62fe6e584ce09434726426543e9c
 E:\code\project\app\.test-sandbox\a9ec8b12f8b346f38def6d0917e20f86
+E:\code\project\app\.test-sandbox\56301bc0caa84b2ab4367b0e545035ec
 ```
 
-**Cleanup verified: no test fixture remains.** Parent `.test-sandbox` không còn. Không tạo cross-volume fixtures; C: chỉ đọc system executable metadata/thông tin hệ thống. `.git` là metadata repository được người dùng yêu cầu tạo, không phải test fixture. `E:\code\project\app\MigrationLogs` đã tồn tại trước lượt này, được giữ nguyên và loại khỏi Git/package bằng `.gitignore`.
+**Cleanup verified: no test fixture remains.** Parent `.test-sandbox` không còn. Sandbox cuối dùng để chạy lại toàn bộ 74 update checks sau khi cấu hình endpoint đã xác minh; tất cả vẫn đạt và không có startup request. Không tạo cross-volume fixtures; C: chỉ đọc system executable metadata/thông tin hệ thống. `.git` là metadata repository được người dùng yêu cầu tạo, không phải test fixture. `E:\code\project\app\MigrationLogs` đã tồn tại trước lượt này, được giữ nguyên và loại khỏi Git/package bằng `.gitignore`.
 
 Audit update code: không Invoke-Expression/iex, DownloadFile, BITS, Expand-Archive, remote script execution hoặc thêm Start-Process. Shell launch mới duy nhất mở URI HTTPS sau validation; không có command arguments. Existing migration/discovery/maintenance engine và guards giữ nguyên.
 
-Online update endpoint tested: **no — chưa publish/xác minh public version.json tại thời điểm commit đầu**. Endpoint trong AppInfo để trống cho đến khi publication được xác minh. Online GET, nếu thực hiện sau publication, chỉ đọc metadata và sẽ được ghi lại ở đây; không download release hoặc tự mở browser. UI trực tiếp, browser thành công, TLS/proxy thực tế và các manual tests bên dưới chưa được xác nhận bởi tests offline.
+Online update endpoint tested: **yes**. Sau khi push `version.json` lên repo do người dùng chỉ định, production `Get-UpdateStatus` đã GET `https://raw.githubusercontent.com/nemoforge/Junction-Manager/main/version.json` thành công, trả `UpToDate` và `V1.0.0`. Sau bước xác minh mới cấu hình endpoint này trong AppInfo. Không download release, không mở browser và không ghi log/file trong online probe (`-LibraryOnly`, Context null). HTTPS/certificate validation mặc định của môi trường này hoạt động; proxy/TLS failure chỉ được kiểm tra qua failure handling, không mô phỏng server chứng chỉ sai. UI trực tiếp, browser thành công và các manual tests bên dưới vẫn chưa được xác nhận.
 
 ## Chưa runtime-test và manual test còn cần
 

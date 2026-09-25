@@ -16,8 +16,8 @@ $script:AppInfo = [pscustomobject]@{
     Website = 'nemoforge.github.io'
     SupportEmail = 'support@studyhelp.space'
     RepositoryUrl = 'https://github.com/nemoforge/Junction-Manager'
-    # Configure only after publishing and verifying public version.json (see README).
-    UpdateMetadataUrl = ''
+    # Public JSON published in the repository and verified with the production GET.
+    UpdateMetadataUrl = 'https://raw.githubusercontent.com/nemoforge/Junction-Manager/main/version.json'
 }
 
 function Write-OperationLog {
